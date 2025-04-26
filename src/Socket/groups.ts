@@ -331,13 +331,13 @@ export const extractGroupMetadata = (result: BinaryNode) => {
 	let descId: string | undefined
 	let descOwner: string | undefined
 	let descOwnerPhoneNumber: string | undefined
-	let descTime: string | undefined
+	let descTime: number | undefined
 	if(descChild) {
 		desc = getBinaryNodeChildString(descChild, 'body')
 		descOwner = descChild.attrs.participant
 		descOwnerPhoneNumber = descChild.attrs.participant_pn
 		descId = descChild.attrs.id
-		descTime = descChild.attrs.t
+		descTime = +descChild.attrs.t
 	}
 
 	const groupId = group.attrs.id.includes('@') ? group.attrs.id : jidEncode(group.attrs.id, 'g.us')
